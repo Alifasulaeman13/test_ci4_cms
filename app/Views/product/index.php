@@ -6,6 +6,7 @@
     <title>Product Management - CMS</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <style>
         *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
@@ -328,11 +329,11 @@
                         <td class="price">Rp <?= number_format($prod['price'], 0, ',', '.') ?></td>
                         <td>
                             <div class="actions">
-                                <a href="/product/buy/<?= $prod['product_id'] ?>" class="btn btn-buy"
-                                   onclick="return confirm('Simulasikan pembelian 1 unit <?= esc($prod['product_name']) ?>?')">🛒 Beli</a>
+                                <button type="button" class="btn btn-buy" 
+                                        onclick="confirmBuy(<?= $prod['product_id'] ?>, '<?= esc(addslashes($prod['product_name'])) ?>')">🛒 Beli</button>
                                 <a href="/product/edit/<?= $prod['product_id'] ?>" class="btn btn-edit">✏️ Edit</a>
-                                <a href="/product/delete/<?= $prod['product_id'] ?>" class="btn btn-delete"
-                                   onclick="return confirm('Yakin hapus produk ini?')">🗑️ Hapus</a>
+                                <button type="button" class="btn btn-delete" 
+                                        onclick="confirmDelete(<?= $prod['product_id'] ?>, '<?= esc(addslashes($prod['product_name'])) ?>')">🗑️ Hapus</button>
                             </div>
                         </td>
                     </tr>
@@ -352,5 +353,46 @@
     </div>
 
 </main>
+
+<script>
+    // Konfigurasi warna default untuk SweetAlert2 di Dark Mode
+    const swalDark = Swal.mixin({
+        background: '#1e293b',
+        color: '#f1f5f9',
+        confirmButtonColor: '#6366f1',
+        cancelButtonColor: '#64748b'
+    });
+
+    function confirmBuy(id, name) {
+        swalDark.fire({
+            title: 'Beli Produk?',
+            text: `Simulasikan pembelian 1 unit ${name}?`,
+            icon: 'question',
+            showCancelButton: true,
+            confirmButtonText: 'Ya, Beli!',
+            cancelButtonText: 'Batal'
+        }).then((result) => {
+            if (result.isConfirmed) {
+                window.location.href = '/product/buy/' + id;
+            }
+        });
+    }
+
+    function confirmDelete(id, name) {
+        swalDark.fire({
+            title: 'Hapus Produk?',
+            text: `Yakin ingin menghapus ${name}? Data tidak dapat dikembalikan.`,
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#ef4444',
+            confirmButtonText: 'Ya, Hapus!',
+            cancelButtonText: 'Batal'
+        }).then((result) => {
+            if (result.isConfirmed) {
+                window.location.href = '/product/delete/' + id;
+            }
+        });
+    }
+</script>
 </body>
 </html>
