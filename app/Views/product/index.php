@@ -118,6 +118,12 @@
             border: 1px solid rgba(239,68,68,0.2);
         }
         .btn-delete:hover { background: rgba(239,68,68,0.22); }
+        .btn-buy {
+            background: rgba(52,211,153,0.15);
+            color: #34d399;
+            border: 1px solid rgba(52,211,153,0.25);
+        }
+        .btn-buy:hover { background: rgba(52,211,153,0.25); }
 
         /* ---- STATS CARDS ---- */
         .stats-grid {
@@ -322,6 +328,8 @@
                         <td class="price">Rp <?= number_format($prod['price'], 0, ',', '.') ?></td>
                         <td>
                             <div class="actions">
+                                <a href="/product/buy/<?= $prod['product_id'] ?>" class="btn btn-buy"
+                                   onclick="return confirm('Simulasikan pembelian 1 unit <?= esc($prod['product_name']) ?>?')">🛒 Beli</a>
                                 <a href="/product/edit/<?= $prod['product_id'] ?>" class="btn btn-edit">✏️ Edit</a>
                                 <a href="/product/delete/<?= $prod['product_id'] ?>" class="btn btn-delete"
                                    onclick="return confirm('Yakin hapus produk ini?')">🗑️ Hapus</a>

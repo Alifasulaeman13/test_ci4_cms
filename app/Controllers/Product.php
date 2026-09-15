@@ -55,10 +55,28 @@ class Product extends BaseController
         return redirect()->to('/product');
     }
 
+    // SIMULASI PEMBELIAN: Kurangi stok produk 1
+    public function buy($id)
+    {
+        $product = $this->productModel->find($id);
+        
+        if ($product && $product['qty_in_stock'] > 0) {
+            $this->productModel->update($id, [
+                'qty_in_stock' => $product['qty_in_stock'] - 1
+            ]);
+            session()->setFlashdata('success', 'Berhasil mensimulasikan pembelian: ' . $product['product_name']);
+        } else {
+            session()->setFlashdata('error', 'Stok produk habis atau produk tidak ditemukan!');
+        }
+        
+        return redirect()->to('/product');
+    }
+
     // DELETE: Hapus produk
     public function delete($id)
     {
         $this->productModel->delete($id);
+        session()->setFlashdata('success', 'Produk berhasil dihapus!');
         return redirect()->to('/product');
     }
 }
