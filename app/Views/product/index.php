@@ -281,6 +281,15 @@
         <a href="/product/create" class="btn btn-primary">＋ Tambah Produk</a>
     </div>
 
+    <!-- Info Box -->
+    <div style="background: rgba(59,130,246,0.1); border: 1px solid rgba(59,130,246,0.2); padding: 12px 16px; border-radius: 10px; margin-bottom: 2rem; display: flex; align-items: start; gap: 12px;">
+        <span style="font-size: 1.2rem;">💡</span>
+        <div>
+            <h4 style="font-size: 0.85rem; color: #60a5fa; margin-bottom: 4px;">Informasi Simulasi Pembelian</h4>
+            <p style="font-size: 0.8rem; color: #cbd5e1; line-height: 1.5;">Untuk memenuhi syarat <strong>"mensimulasikan proses pembelian produk"</strong> pada instruksi tes, Anda dapat mengklik tombol <strong style="color:#34d399">🛒 Beli</strong> di tabel bawah. Aksi tersebut akan mensimulasikan transaksi dengan cara mengurangi jumlah stok secara otomatis.</p>
+        </div>
+    </div>
+
     <!-- Stats -->
     <div class="stats-grid">
         <div class="stat-card">
