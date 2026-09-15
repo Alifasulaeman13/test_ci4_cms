@@ -16,7 +16,7 @@ Aplikasi ini adalah sistem *Content Management System (CMS)* sederhana yang diba
    - Skema database (tabel `Product`) dibuat menggunakan sistem Migration bawaan CI4, sehingga mudah di-*deploy* di mesin manapun.
 
 ## 💻 Persyaratan Teknis
-- **PHP** ^8.1
+- **PHP** ^8.3
 - **Database** MySQL (atau MariaDB)
 
 ## 🛠️ Cara Instalasi & Menjalankan
