@@ -1,56 +1,41 @@
-# Solusi Soal 3: CodeIgniter 4 CMS (Product Management)
+# Soal 3: CI4 CMS (Product Management)
 
-Aplikasi ini adalah sistem *Content Management System (CMS)* sederhana yang dibangun menggunakan **CodeIgniter 4** untuk mensimulasikan proses pembelian produk sesuai dengan persyaratan tes.
+Aplikasi CMS sederhana ini dibuat menggunakan CodeIgniter 4 untuk menjawab Soal 3 dari test Wrapstation.
 
-## 🚀 Fitur Utama
-1. **CRUD Produk Lengkap** (Manajemen Data)
-   - Tambah produk dengan input nama, stok, dan harga
-   - Edit detail produk
-   - Hapus produk (dilengkapi validasi modern SweetAlert2)
-   - Tampilan *Modern Dark Mode* yang responsif.
-2. **Simulasi Proses Pembelian Produk**
-   - Dilengkapi tombol khusus **"🛒 Beli"** di setiap baris produk.
-   - Saat ditekan, sistem akan mengkonfirmasi pembelian dan secara otomatis **mengurangi stok (qty) produk sebanyak 1 unit**.
-   - Ini adalah bentuk simulasi langsung (transaksional sederhana) untuk memenuhi syarat "mensimulasikan proses pembelian produk" tanpa memerlukan sistem *Cart* (keranjang) atau otentikasi User yang kompleks.
-3. **Database Migrations**
-   - Skema database (tabel `Product`) dibuat menggunakan sistem Migration bawaan CI4, sehingga mudah di-*deploy* di mesin manapun.
+## Fitur Utama
+1. **CRUD Produk**: Bisa tambah, edit, dan hapus produk. UI/UX nya menggunakan dark mode, glassmorphism, dan SweetAlert2 untuk konfirmasinya.
+2. **Simulasi Pembelian**: Sesuai requirement soal, ada tombol "Beli" di tiap produk. Kalau diklik, stok (qty) produk tersebut otomatis berkurang 1. Ini untuk mensimulasikan proses checkout sederhana tanpa harus membuat sistem cart yang kompleks.
+3. **Database Migrations**: Struktur tabel database dibuat pakai file migration bawaan CI4, jadi gampang di-setup.
 
-## 💻 Persyaratan Teknis
-- **PHP** ^8.3
-- **Database** MySQL (atau MariaDB)
+## System Specs
+Sesuai dengan *Submission Guidelines*:
+- OS: Windows
+- CPU: Intel Core i7 Gen 14
+- RAM: 16 GB
+- Storage: SSD 512GB Gen4
 
-## 💻 Spesifikasi Sistem (Environment)
-Sesuai dengan *Submission Guidelines*, berikut adalah spesifikasi sistem yang digunakan selama pengerjaan tugas ini:
-- **OS:** Windows
-- **Prosesor:** Intel Core i7 Gen 14
-- **RAM:** 16 GB
-- **Storage:** SSD 512GB Gen4
+## Cara Install & Run
+Requirement minimum: PHP 8.3 & MySQL/MariaDB
 
-## 🛠️ Cara Instalasi & Menjalankan
+1. **Clone repo ini:**
+```bash
+git clone https://github.com/Alifasulaeman13/test_ci4_cms.git
+cd test_ci4_cms
+```
 
-1. **Clone repository ini**
-   ```bash
-   git clone https://github.com/Alifasulaeman13/test_ci4_cms.git
-   cd test_ci4_cms
-   ```
+2. **Setup Database:**
+Buat database baru di MySQL dengan nama `cmd_db` (atau sesuaikan config di `.env` file).
 
-2. **Buat Database**
-   Buka *phpMyAdmin* (atau tool sejenis) dan buat database baru bernama **`cmd_db`** (atau sesuaikan dengan `.env`).
+3. **Install Dependencies & Migrate:**
+```bash
+composer install
+php spark migrate
+```
+*(Perintah migrate akan otomatis nge-create tabel `products` di database).*
 
-3. **Install Dependencies & Jalankan Migration**
-   ```bash
-   composer install
-   php spark migrate
-   ```
-   *Perintah `spark migrate` akan otomatis membuat tabel `products` beserta struktur strukturnya di database Anda.*
+4. **Jalankan Server Lokal:**
+```bash
+php spark serve
+```
 
-4. **Jalankan Development Server**
-   ```bash
-   php spark serve
-   ```
-
-5. **Akses Aplikasi**
-   Buka browser dan akses: **[http://localhost:8080/product](http://localhost:8080/product)**
-
-## 🎨 Tentang UI/UX
-Tampilan dibangun sepenuhnya dari awal (tanpa *template/framework CSS* eksternal seperti Bootstrap) untuk membuktikan kemampuan modifikasi dan *styling* mandiri. UI ini mengadopsi tren **Modern Dark Mode** dengan sentuhan *Glassmorphism*, palet warna yang kontras, dan Auto-Formatter angka (Ribuan) secara *real-time* berbasis JavaScript murni. Notifikasi dan konfirmasi aksi menggunakan *SweetAlert2* untuk *user experience* terbaik.
+5. Buka di browser: `http://localhost:8080/product`
