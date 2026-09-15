@@ -19,6 +19,13 @@ Aplikasi ini adalah sistem *Content Management System (CMS)* sederhana yang diba
 - **PHP** ^8.3
 - **Database** MySQL (atau MariaDB)
 
+## 💻 Spesifikasi Sistem (Environment)
+Sesuai dengan *Submission Guidelines*, berikut adalah spesifikasi sistem yang digunakan selama pengerjaan tugas ini:
+- **OS:** Windows
+- **Prosesor:** Intel Core i7 Gen 14
+- **RAM:** 16 GB
+- **Storage:** SSD 512GB Gen4
+
 ## 🛠️ Cara Instalasi & Menjalankan
 
 1. **Clone repository ini**
